@@ -20,7 +20,7 @@ const (
 	LOC_JP            = "Asia/Tokyo"
 )
 
-func GetConf() mysql.Config {
+func Get() mysql.Config {
 	conf := mysql.Config{}
 	hostname := getHostname()
 	port := getPort()
@@ -29,6 +29,7 @@ func GetConf() mysql.Config {
 	setPasswd(&conf)
 	setDatabase(&conf)
 	conf.Loc = getLocation()
+	conf.Net = "tcp"
 	return conf
 }
 

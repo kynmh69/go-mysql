@@ -22,6 +22,7 @@ func TestGetConf(t *testing.T) {
 			name: "test ok",
 			want: mysql.Config{
 				Addr:   "database:3306",
+				Net: "tcp",
 				User:   "user",
 				Passwd: "passwd",
 				DBName: "unittest",
@@ -31,7 +32,7 @@ func TestGetConf(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := GetConf(); !reflect.DeepEqual(got, tt.want) {
+			if got := Get(); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("GetConf() = %v, want %v", got, tt.want)
 			}
 		})
