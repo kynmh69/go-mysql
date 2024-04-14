@@ -1,0 +1,20 @@
+services:
+  database:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - TZ=Asia/Tokyo
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=app
+      - MYSQL_PASS=password
+      - MYSQL_DATABASE=test
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    environment:
+      - MYSQL_USER=app
+      - MYSQL_PASS=password
+      - MYSQL_DATABASE=test
+    depends_on:
+      - database
