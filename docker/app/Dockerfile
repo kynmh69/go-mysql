@@ -1,10 +1,13 @@
-FROM golang:1.22.2-bullseye as build
-
-COPY ./ /go/app
+FROM golang:1.22.2-bullseye as builder
 WORKDIR /go/app
+COPY ./config ./
+COPY ./database ./
+COPY go.sum go.mod ./
+COPY main.go ./
 
-RUN go build -o ./bin/
+RUN go build -o bin/main ./main.go
 
-FROM alpine
-COPY --from=build /go/app/bin/main /usr/local/
-CMD [ "main" ]
+FROM alpine:latest
+WORKDIR /go/app
+COPY --from=builder /go/app/bin/main ./bin/
+# CMD [ "bin/main" ]

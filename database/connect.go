@@ -18,10 +18,13 @@ func ConnectToMySQL() {
 	db, err := sql.Open(DRIVER, conf.FormatDSN())
 	if err != nil {
 		log.Fatalln("cannot open db", err)
+	} else {
+		log.Println("open db.")
 	}
 	if err = db.Ping(); err != nil {
 		db.Close()
 		log.Fatalln("cannot connect db.")
 	}
 	Connection = goqu.New(DRIVER, db)
+	Connection.Logger(initLogger())
 }

@@ -16,3 +16,5 @@ services:
       - MYSQL_USER=app
       - MYSQL_PASS=password
       - MYSQL_DATABASE=test
+    depends_on:
+      - database
