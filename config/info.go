@@ -13,7 +13,7 @@ const (
 	MYSQL_HOST        = "MYSQL_HOST"
 	MYSQL_PORT        = "MYSQL_PORT"
 	MYSQL_USER        = "MYSQL_USER"
-	MYSQL_PASS        = "MYSQL_PASS"
+	MYSQL_PASS        = "MYSQL_PASSWORD"
 	MYSQL_DATABASE    = "MYSQL_DATABASE"
 	MYSQL_LOC         = "MYSQL_LOC"
 	DEFAULT_COLLATION = "utf8mb4_unicode_ci"
